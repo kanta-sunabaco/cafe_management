@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Transaction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>商品入出庫</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="product_id">商品</label>
+                <select name="product_id" id="product_id">
+                    {% for product in products %}
+                        <option value="{{ product.ID }}">{{ product.Name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">数量</label>
+                <input type="number" name="quantity" id="quantity" required>
+            </div>
+            <div class="form-group">
+                <label for="memo">メモ</label>
+                <input type="text" name="memo" id="memo">
+            </div>
+            <button type="submit">入出庫を記録</button>
+        </form>
+    </div>
+</body>
+</html>
