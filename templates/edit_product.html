@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品編集</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>商品編集</h1>
+        <form action="{{ url_for('edit_product', id=product.ID) }}" method="POST">
+            <div class="form-group">
+                <label for="name">商品名:</label>
+                <input type="text" id="name" name="name" value="{{ product.Name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="category">カテゴリー:</label>
+                <input type="text" id="category" name="category" value="{{ product.Category }}" required>
+            </div>
+            <div class="form-group">
+                <label for="stock">在庫数:</label>
+                <input type="number" id="stock" name="stock" value="{{ product.Stock }}" required>
+            </div>
+            <div class="form-group">
+                <label for="price">金額:</label>
+                <input type="text" id="price" name="price" value="{{ product.Price }}" required>
+            </div>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</body>
+</html>

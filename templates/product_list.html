@@ -17,6 +17,7 @@
                     <th>カテゴリー</th>
                     <th>在庫数</th>
                     <th>金額</th>
+                    <th>アクション</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +28,12 @@
                     <td>{{ product.Category }}</td>
                     <td>{{ product.Stock }}</td>
                     <td>{{ product.Price }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_product', id=product.ID) }}">編集</a>
+                        <form action="{{ url_for('delete_product', id=product.ID) }}" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

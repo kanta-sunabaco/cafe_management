@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取引編集</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>取引編集</h1>
+        <form action="{{ url_for('edit_transaction', id=transaction.ID) }}" method="POST">
+            <div class="form-group">
+                <label for="product_id">商品名:</label>
+                <select id="product_id" name="product_id" required>
+                    {% for product in products %}
+                        <option value="{{ product.ID }}" {% if product.ID == transaction.ProductID %} selected {% endif %}>
+                            {{ product.Name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">数量:</label>
+                <input type="number" id="quantity" name="quantity" value="{{ transaction.Quantity }}" required>
+            </div>
+            <div class="form-group">
+                <label for="memo">メモ:</label>
+                <input type="text" id="memo" name="memo" value="{{ transaction.Memo }}">
+            </div>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</body>
+</html>
